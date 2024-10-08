@@ -6,25 +6,33 @@ def dativ(input_jmena):
     if " " in input_jmena:
         jmena = input_jmena.split(" ")
     else:
-        jmena = [input_jmena]
+        jmena = [input_jmena.lower()]
 
     for jmeno in jmena:
+        jmeno = jmeno.lower()
         if jmeno[-1] == "a":
-            if jmeno[-2] == "d" or jmeno[-2] == "n":  # Anna, Linda
+            if (
+                jmeno[-2] == "d" or jmeno[-2] == "n" or jmeno[-2] == "b"
+            ):  # Anna, Linda, Ljuba
                 if (
                     jmeno[-3] == "o"
-                    and jmeno[-4] == "b"
-                    or jmeno[-3] == "i"
-                    and jmeno[-4] == "l"
+                    and (jmeno[-4] == "b" or jmeno[-4] == "d")
                     or jmeno[-3] == "a"
                     and jmeno[-4] == "t"
-                ):  # Svoboda, Kalina, Smetana
+                ):  # Svoboda, Smetana, Škoda
                     output.append(jmeno[0:-1] + "ovi")
                 else:
                     output.append(jmeno[0:-1] + "ě")
             elif jmeno[-2] == "ď" or (
                 jmeno[-2] == "l" and jmeno[-3] == "a"
             ):  # Láďa, Fiala
+                if jmeno[-4] == "n":  # Naďa
+                    output.append(jmeno[0:-2] + "dě")
+                else:
+                    output.append(jmeno[0:-1] + "ovi")
+            elif jmeno[-2] == "m":  # Ema
+                output.append(jmeno[0:-1] + "ě")
+            elif jmeno[-2] == "s":  # Štursa
                 output.append(jmeno[0:-1] + "ovi")
             elif jmeno[-2] == "g":  # Olga
                 output.append(jmeno[0:-2] + "ze")
@@ -39,7 +47,9 @@ def dativ(input_jmena):
                     or jmeno[-3] == "j"
                     or jmeno[-3] == "b"
                     or jmeno[-3] == "p"
-                ):  # Procházka, Jirka, Růžička, Matějka, Rybka
+                    or jmeno[-3] == "n"
+                    or jmeno[-3] == "l"
+                ):  # Procházka, Jirka, Růžička, Matějka, Rybka, Červenka, Havelka
                     output.append(jmeno[0:-1] + "ovi")
                 else:
                     output.append(jmeno[0:-2] + "ce")
@@ -55,12 +65,22 @@ def dativ(input_jmena):
                         output.append(jmeno[0:-2] + "ře")
                     else:  # Míra
                         output.append(jmeno[0:-1] + "ovi")
-                elif jmeno[-3] == "d" or jmeno[-3] == "e":  # Jindra, Kučera
+                elif (
+                    jmeno[-3] == "d"
+                    or jmeno[-3] == "e"
+                    or jmeno[-3] == "v"
+                    or jmeno[-3] == "o"
+                ):  # Jindra, Kučera, Vávra, Sýkora
                     output.append(jmeno[0:-1] + "ovi")
                 else:
                     output.append(jmeno[0:-2] + "ře")
             elif jmeno[-2] == "t":
-                if jmeno[-3] == "n" or jmeno[-3] == "j":  # Franta, Vojta
+                if (
+                    jmeno[-3] == "n"
+                    or jmeno[-3] == "j"
+                    or jmeno[-3] == "r"
+                    or jmeno[-3] == "á"
+                ):  # Franta, Vojta, Bárta
                     output.append(jmeno[0:-1] + "ovi")
                 else:  # Agáta
                     output.append(jmeno[0:-1] + "ě")
@@ -86,7 +106,7 @@ def dativ(input_jmena):
         elif jmeno[-1] == "e":
             if jmeno[-2] == "g":  # George
                 output.append(jmeno[0:-1] + "ovi")
-            elif jmeno[-2] == "e":  # Lee
+            elif jmeno[-2] == "e" or jmeno[-2] == "o":  # Lee, Zoe
                 output.append(jmeno)
             else:
                 output.append(jmeno[0:-1] + "i")
@@ -113,6 +133,8 @@ def dativ(input_jmena):
                     output.append(jmeno + "ovi")
                 else:  # Karel
                     output.append(jmeno[0:-2] + "lovi")
+            elif jmeno[-2] == "o" and jmeno[-3] == "k":  # Nikol
+                output.append(jmeno)
             elif jmeno[-2] in ["a", "i", "o"]:  # Michal, Bohumil, Anatol
                 output.append(jmeno + "ovi")
             else:  # Král
@@ -120,8 +142,16 @@ def dativ(input_jmena):
         elif jmeno[-1] == "o":  # Ronaldo, Santiago
             output.append(jmeno + "vi")
         elif jmeno[-1] == "r":
-            if jmeno[-2] == "a":  # Dagmar
-                if jmeno[-3] == "k":  # Otakar
+            if jmeno[-2] == "a" or jmeno[-2] == "e":  # Dagmar, Ester
+                if (
+                    jmeno[-3] == "k"
+                    or jmeno[-3] == "v"
+                    or jmeno[-3] == "m"
+                    or jmeno[-3] == "t"
+                    or jmeno[-3] == "p"
+                    or jmeno[-3] == "l"
+                    or jmeno[-3] == "g"
+                ):  # Otakar, Oliver, Otmar, Peter, Kašpar, Müller, Langer
                     output.append(jmeno + "ovi")
                 else:
                     output.append(jmeno)
@@ -134,8 +164,24 @@ def dativ(input_jmena):
                 output.append(jmeno + "mu")
         elif jmeno[-1] == "ý":
             output.append(jmeno[0:-1] + "ému")
-        elif jmeno[-1] == "ů":  # Petrů
-            output.append(jmeno)
+        elif jmeno[-1] == "c":  # Kadlec
+            if jmeno[-2] == "e" and (jmeno[-3] == "n" or jmeno[-3] == "m"):  # Vavřinec
+                output.append(jmeno[0:-2] + "covi")
+            else:
+                output.append(jmeno + "ovi")
+        elif jmeno[-1] == "t":  # Růt
+            if jmeno[-2] == "í":  # Vít
+                output.append(jmeno + "ovi")
+            else:
+                output.append(jmeno)
+        elif jmeno[-1] == "ů" or jmeno[-1] == "d":  # Petrů, Ingrid
+            if (
+                jmeno[-2] == "r" or jmeno[-2] == "n" or jmeno[-2] == "a"
+            ):  # Richard, Roland, Strnad
+                output.append(jmeno + "ovi")
+            else:
+                output.append(jmeno)
         else:
             output.append(jmeno + "ovi")
+    output = [item.capitalize() for item in output]
     return " ".join(output)

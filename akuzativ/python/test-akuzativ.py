@@ -7,7 +7,7 @@ names_json_path = os.path.join(root_folder, "test", "names.json")
 
 with open(names_json_path, "r") as file:
     data = json.load(file)
-    names = data["names"]
+    names = data["surnames"]
 
 print("-Koho, co?-")
 for name in names:

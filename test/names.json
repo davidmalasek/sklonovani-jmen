@@ -282,7 +282,6 @@
         "Nina",
         "Nora",
         "Norbert",
-        "Novýrok",
         "Oldřich",
         "Oldřiška",
         "Oleg",
@@ -362,7 +361,6 @@
         "Stanislava",
         "Stela",
         "Svatava",
-        "Svátekpráce",
         "Svatopluk",
         "Svatoslav",
         "Světlana",
@@ -434,5 +432,18 @@
         "Zuzana",
         "Žaneta",
         "Žofie"
+    ],
+    "surnames": [
+        "Novák", "Svoboda", "Novotný", "Dvořák", "Černý", "Procházka", "Kučera", "Veselý", "Horák", "Marek", 
+        "Kříž", "Malý", "Němec", "Pospíšil", "Jelínek", "Havel", "Beneš", "Bláha", "Krejčí", "Pokorný",
+        "Polák", "Musil", "Šimek", "Urban", "Štěpánek", "Vávra", "Matoušek", "Holub", "Růžička", "Kolář", 
+        "Kovář", "Zeman", "Tichý", "Valenta", "Fiala", "Hájek", "Dušek", "Šťastný", "Kašpar", "Bárta", 
+        "Růžena", "Kubík", "Král", "Vacek", "Petr", "Říha", "Kopecký", "Soukup", "Zatloukal", "Zajíc",
+        "Strnad", "Adamec", "Bednář", "Suk", "Bureš", "Hrdlička", "Pavlík", "Křížek", "Škoda", "Müller",
+        "Petřík", "Červenka", "Šebek", "Hanák", "Dlouhý", "Vodička", "Matějka", "Baránek", "Sýkora", "Filip",
+        "Štursa", "Šolc", "Dohnal", "Gregor", "Hloušek", "Drábek", "Polášek", "Knotek", "Mašek", "Havelka",
+        "Janoušek", "Sedláček", "Koudelka", "Janeček", "Chalupa", "Horáček", "Kolman", "Říhová", "Kolb", "Eliáš",
+        "Langer", "Zítko", "Rezek", "Forman", "Frydrych", "Smetana", "Kraus", "Hanzlík", "Mucha", "Pešek",
+        "Řehoř", "Otakar", "Vojta", "Kozák", "Vávrová"
     ]
 }

@@ -1,5 +1,5 @@
 # Skloňování jmen
-<sup>⚙️ In Development ⚙️</sup>
+<sup>⚙️ In Progress ⚙️</sup>
 
 Projekt, který bude nabízet set funkcí vracející jméno / jména vyskloňované v příslušném pádě v českém jazyce. 
 

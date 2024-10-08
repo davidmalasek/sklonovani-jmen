@@ -6,15 +6,16 @@ def genitiv(input_jmena):
     if " " in input_jmena:
         jmena = input_jmena.split(" ")
     else:
-        jmena = [input_jmena]
+        jmena = [input_jmena.lower()]
 
     for jmeno in jmena:
+        jmeno = jmeno.lower()
         if jmeno[-1] == "a":
             if jmeno[-2] in ["d", "n"]:  # Anna, Linda
                 output.append(jmeno[0:-1] + "y")
             elif jmeno[-2] in ["č", "j"]:  # Ivča, Kája
                 output.append(jmeno[0:-1] + "i")
-            elif jmeno[-2] == "ď":  # Láďa
+            elif jmeno[-2] == "ď" or jmeno[-2] == "c":  # Láďa, Danica
                 output.append(jmeno[0:-1] + "i")
             elif jmeno[-2] == "g":  # Olga
                 output.append(jmeno[0:-1] + "y")
@@ -52,9 +53,11 @@ def genitiv(input_jmena):
         elif jmeno[-1] == "e":
             if jmeno[-2] == "g":  # George
                 output.append(jmeno)
-            elif jmeno[-2] == "e":  # Lee
+            elif jmeno[-2] == "e" or jmeno[-2] == "o":  # Lee, Zoe
                 output.append(jmeno)
-            elif jmeno[-2] == "i":  # Lucie
+            elif (
+                jmeno[-2] == "i" or jmeno[-2] == "c" or jmeno[-2] == "š"
+            ):  # Lucie, Alice, Danuše
                 output.append(jmeno)
             else:
                 output.append(jmeno[0:-1] + "i")
@@ -81,19 +84,32 @@ def genitiv(input_jmena):
                     output.append(jmeno + "a")
                 else:  # Karel
                     output.append(jmeno[0:-2] + "la")
-            elif jmeno[-2] in ["a", "i", "o"]:  # Michal, Bohumil, Anatol
+            elif jmeno[-2] == "o" and jmeno[-3] == "k":  # Nikol
+                output.append(jmeno)
+            elif jmeno[-2] in ["a", "i", "o", "s"]:  # Michal, Bohumil, Anatol, Přemysl
                 output.append(jmeno + "a")
             else:  # Král
                 output.append(jmeno + "e")
-        elif jmeno[-1] == "m":  # Maxim
-            output.append(jmeno + "a")
-        elif jmeno[-1] == "o":  # Ronaldo, Santiago
-            output.append(jmeno[0:-1] + "a")
+        elif jmeno[-1] == "m":
+            if jmeno[-2] == "a":  # Miriam
+                output.append(jmeno)
+            else:  # Maxim
+                output.append(jmeno + "a")
+        elif jmeno[-1] == "o":
+            if jmeno[-2] == "t":  # Oto
+                output.append(jmeno[0:-1] + "y")
+            else:  # Ronaldo, Santiago
+                output.append(jmeno[0:-1] + "a")
         elif jmeno[-1] == "r":
-            if jmeno[-2] == "a":
-                if jmeno[-3] == "k":  # Otakar
+            if jmeno[-2] == "a" or jmeno[-2] == "e":  # Dagmar, Ester
+                if (
+                    jmeno[-3] == "k"
+                    or jmeno[-3] == "m"
+                    or jmeno[-3] == "p"
+                    or jmeno[-3] == "l"
+                ):  # Otakar, Otmar, Kašpar
                     output.append(jmeno + "a")
-                else:  # Dagmar
+                else:
                     output.append(jmeno)
             else:
                 output.append(jmeno + "a")
@@ -104,6 +120,26 @@ def genitiv(input_jmena):
                 output.append(jmeno + "ho")
         elif jmeno[-1] == "ý":
             output.append(jmeno[0:-1] + "ého")
+        elif jmeno[-1] == "d":
+            if jmeno[-2] == "n":  # Zikmund
+                output.append(jmeno + "a")
+            else:  # Ingrid
+                output.append(jmeno)
+        elif jmeno[-1] == "c":
+            if jmeno[-2] == "n":  # Vincenc
+                output.append(jmeno[0:-1] + "e")
+            else:
+                if jmeno[-2] == "l":  # Šolc
+                    output.append(jmeno + "e")
+                else:  # Vavřinec
+                    output.append(jmeno[0:-2] + "ce")
+        elif jmeno[-1] == "ž":
+            output.append(jmeno + "e")
+        elif jmeno[-1] == "t":
+            if jmeno[-2] == "í":  # Vít
+                output.append(jmeno + "a")
+            else:  # Růt
+                output.append(jmeno)
         elif jmeno[-1] == "ů":  # Petrů
             output.append(jmeno)
         elif jmeno[-1] in ["c", "j", "ř", "š"]:  # Tomáš, Ondřej, Kadlec
@@ -112,4 +148,5 @@ def genitiv(input_jmena):
             output.append(jmeno + "e")
         else:
             output.append(jmeno + "a")
+    output = [item.capitalize() for item in output]
     return " ".join(output)
