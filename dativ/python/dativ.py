@@ -60,7 +60,7 @@ def dativ(input_jmena):
                 else:
                     output.append(jmeno[0:-2] + "ře")
             elif jmeno[-2] == "t":
-                if jmeno[-3] == "n":  # Franta
+                if jmeno[-3] == "n" or jmeno[-3] == "j":  # Franta, Vojta
                     output.append(jmeno[0:-1] + "ovi")
                 else:  # Agáta
                     output.append(jmeno[0:-1] + "ě")
