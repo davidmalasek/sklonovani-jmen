@@ -16,7 +16,7 @@ def akuzativ(input_jmena):
                 jmeno[-2] == "l" and jmeno[-3] == "a"
             ):  # Láďa, Fiala
                 output.append(jmeno[0:-1] + "u")
-            elif jmeno[-2] == "g":  # Olga
+            elif jmeno[-2] == "g" or jmeno[-2] == "s":  # Olga, Denisa
                 output.append(jmeno[0:-1] + "u")
             elif jmeno[-2] == "i":  # Olivia
                 output.append(jmeno[0:-1] + "i")
@@ -40,12 +40,11 @@ def akuzativ(input_jmena):
                 output.append(jmeno[0:-2] + "u")
             elif jmeno[-2] == "o":  # Figueroa
                 output.append(jmeno)
+            elif jmeno[-2] == "c" or jmeno[-2] == "m":  # Danica, Ema
+                output.append(jmeno[0:-1] + "u")
             elif jmeno[-2] == "r":  # Klára
-                if jmeno[-3] == "í":
-                    if jmeno[-5] == "o":  # Drahomíra
-                        output.append(jmeno[0:-2] + "u")
-                    else:  # Míra
-                        output.append(jmeno[0:-1] + "u")
+                if jmeno[-3] == "í":  # Míra, Drahomíra
+                    output.append(jmeno[0:-1] + "u")
                 elif (
                     jmeno[-3] == "d" or jmeno[-3] == "e" or jmeno[-3] == "o"
                 ):  # Jindra, Kučera
@@ -117,9 +116,14 @@ def akuzativ(input_jmena):
             else:  # Král
                 output.append(jmeno + "e")
         elif jmeno[-1] == "o":  # Ronaldo, Santiago
-            output.append(jmeno + "a")
+            output.append(jmeno[0:-1] + "a")
+        elif jmeno[-1] == "d":  # Ingrid
+            if jmeno[-2] == "o":  # Leopold
+                output.append(jmeno + "a")
+            else:
+                output.append(jmeno)
         elif jmeno[-1] == "r":
-            if jmeno[-2] == "a":  # Dagmar
+            if jmeno[-2] == "a" or jmeno[-2] == "e":  # Dagmar, Ester
                 if jmeno[-3] == "k":  # Otakar
                     output.append(jmeno + "a")
                 else:
@@ -133,7 +137,7 @@ def akuzativ(input_jmena):
                 output.append(jmeno + "ho")
         elif jmeno[-1] == "ý":
             output.append(jmeno[0:-1] + "ého")
-        elif jmeno[-1] == "ř":  # Kovář
+        elif jmeno[-1] == "ř" or jmeno[-1] == "ž":  # Kovář, Ambrož
             output.append(jmeno + "e")
         elif jmeno[-1] == "ů":  # Petrů
             output.append(jmeno)
@@ -142,3 +146,6 @@ def akuzativ(input_jmena):
         else:
             output.append(jmeno + "a")
     return " ".join(output)
+
+
+# TODO: fix Michael
