@@ -12,7 +12,7 @@ def lokativ(input_jmena):
         jmeno = jmeno.lower()
         if jmeno[-1] == "a":
             if jmeno[-2] in ["d", "n"]:
-                if jmeno[-3] == "o":  # Svoboda
+                if jmeno[-3] == "o" or jmeno[-3] == "a":  # Svoboda, Smetana
                     output.append(jmeno[0:-1] + "ovi")
                 else:  # Anna, Linda
                     output.append(jmeno[0:-1] + "ě")
@@ -50,8 +50,11 @@ def lokativ(input_jmena):
                 output.append(jmeno)
             elif jmeno[-2] == "r":
                 if (
-                    jmeno[-3] == "e" or jmeno[-3] == "d" or jmeno[-3] == "o"
-                ):  # Kučera, Sýkora
+                    jmeno[-3] == "e"
+                    or jmeno[-3] == "d"
+                    or jmeno[-3] == "o"
+                    or jmeno[-3] == "v"
+                ):  # Kučera, Sýkora, Vávra
                     output.append(jmeno[0:-1] + "ovi")
                 else:  # Klára
                     output.append(jmeno[0:-2] + "ře")
@@ -71,7 +74,12 @@ def lokativ(input_jmena):
                     output.append(jmeno[0:-1] + "e")
             elif jmeno[-2] == "ň":  # Soňa
                 output.append(jmeno[0:-2] + "ně")
-            elif jmeno[-3] == "c" or jmeno[-2] == "h":  # Průcha
+            elif (
+                jmeno[-3] == "c"
+                or jmeno[-2] == "h"
+                or jmeno[-2] == "s"
+                or jmeno[-2] == "p"
+            ):  # Průcha, Štursa, Chalupa, Smetana
                 output.append(jmeno[0:-1] + "ovi")
             elif jmeno[-2] in ["e", "š"]:  # Nataša, Andrea, Lea
                 output.append(jmeno[0:-1] + "e")
@@ -142,7 +150,8 @@ def lokativ(input_jmena):
                     or jmeno[-3] == "l"
                     or jmeno[-3] == "v"
                     or jmeno[-3] == "t"
-                ):  # Otakar, Otmar, Kašpar, Oliver, Peter
+                    or jmeno[-3] == "g"
+                ):  # Otakar, Otmar, Kašpar, Oliver, Peter, Langer
                     output.append(jmeno + "ovi")
                 else:
                     output.append(jmeno)
